@@ -1,0 +1,200 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Auburn Coffee design system.
+ * Earthy, editorial, calm. Serif display (Fraunces) + sans (Manrope).
+ * All colour values are oklch tokens. Never hardcode colours in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 3px);
+  --radius-md: calc(var(--radius) - 1px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-forest: var(--forest);
+  --color-forest-foreground: var(--forest-foreground);
+  --color-ivory: var(--ivory);
+  --color-olive: var(--olive);
+  --color-copper: var(--copper);
+  --color-espresso: var(--espresso);
+  --color-gold: var(--gold);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  --radius: 0.25rem;
+
+  /* Warm ivory canvas, espresso ink */
+  --background: oklch(0.977 0.008 85);
+  --foreground: oklch(0.195 0.014 45);
+
+  --card: oklch(0.995 0.004 85);
+  --card-foreground: oklch(0.195 0.014 45);
+  --popover: oklch(0.995 0.004 85);
+  --popover-foreground: oklch(0.195 0.014 45);
+
+  /* Auburn #8B321E */
+  --primary: oklch(0.425 0.128 33);
+  --primary-foreground: oklch(0.955 0.022 84);
+
+  /* Warm ivory #F5E9D8 */
+  --secondary: oklch(0.937 0.026 84);
+  --secondary-foreground: oklch(0.245 0.032 158);
+
+  --muted: oklch(0.945 0.014 84);
+  --muted-foreground: oklch(0.455 0.018 55);
+
+  --accent: oklch(0.937 0.026 84);
+  --accent-foreground: oklch(0.245 0.032 158);
+
+  --destructive: oklch(0.512 0.17 27);
+  --destructive-foreground: oklch(0.977 0.008 85);
+
+  --border: oklch(0.885 0.016 84);
+  --input: oklch(0.865 0.018 84);
+  --ring: oklch(0.425 0.128 33);
+
+  /* Brand extensions */
+  --forest: oklch(0.245 0.032 158);
+  --forest-foreground: oklch(0.955 0.022 84);
+  --ivory: oklch(0.937 0.026 84);
+  --olive: oklch(0.462 0.079 108);
+  --copper: oklch(0.575 0.106 45);
+  --espresso: oklch(0.195 0.014 45);
+  --gold: oklch(0.512 0.078 76);
+
+  --sidebar: oklch(0.245 0.032 158);
+  --sidebar-foreground: oklch(0.955 0.022 84);
+  --sidebar-primary: oklch(0.575 0.106 45);
+  --sidebar-primary-foreground: oklch(0.195 0.014 45);
+  --sidebar-accent: oklch(0.3 0.03 158);
+  --sidebar-accent-foreground: oklch(0.955 0.022 84);
+  --sidebar-border: oklch(0.33 0.028 158);
+  --sidebar-ring: oklch(0.575 0.106 45);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "kern", "liga";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.015em;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-ivory);
+    color: var(--color-espresso);
+  }
+}
+
+/* Editorial helpers */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--color-muted-foreground);
+}
+
+@utility hairline {
+  border-top: 1px solid var(--color-border);
+}
+
+@utility container-editorial {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 78rem;
+  padding-inline: 1.25rem;
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+}
+
+@utility link-underline {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
